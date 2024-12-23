@@ -3,125 +3,147 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
 Rectangle {
-    id: aboutSection
+    id: header
     width: parent.width
-    height: 894
+    height: 100
     color: "transparent"
+    property string currentState: "home"
 
-    property int currentIndex: 0
-    property var images: ["src/coffee_1.png", "src/coffee_2.png", "src/cofee_3.png"]
+    RowLayout {
+        anchors.fill: parent
+        anchors.margins: 10
+        Image {
+            Layout.leftMargin: 50
+            source: "src/logo.png"
+            sourceSize.height: 100
+            sourceSize.width: 100
+            Layout.alignment: Qt.AlignLeft
+        }
 
-    property int smallWidth: 180
-    property int smallHeight: 120
-    property int largeWidth: 360
-    property int largeHeight: 240
+        Rectangle {
+            id: buttonContainer
+            width: 400
+            height: 50
+            color: "transparent"
+            radius: 10
+            border.color: "#FFA07A"
+            border.width: 2
+            Layout.leftMargin: 130
+            Layout.alignment: Qt.AlignHCenter
 
-    ColumnLayout {
-        spacing: 20
-        width: parent.width
-        height: parent.height
+            RowLayout {
+                anchors.fill: parent
+                spacing: 0
+                Rectangle {
+                    id: homeButton
+                    width: parent.width / 3
+                    height: parent.height
+                    color: header.currentState === "home" ? "#FFDAB9" : "transparent"
+                    border.color: header.currentState === "home" ? "#FF8C00" : "transparent"
+                    border.width: header.currentState === "home" ? 2 : 0
+                    radius: 10
 
-        // Карусель
-        RowLayout {
-            spacing: 20
-            width: parent.width
-            height: 400
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            header.currentState = "home"
+                            console.log("Главная нажата")
+                        }
+                    }
 
-            // Левая стрелка
-            Text {
-                text: "◀"
-                font.pixelSize: 80
-                color: "black"
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    Text {
+                        text: "Главная"
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: 16
                     }
                 }
-            }
+                Rectangle {
+                    id: menuButton
+                    width: parent.width / 3
+                    height: parent.height
+                    color: header.currentState === "menu" ? "#FFDAB9" : "transparent"
+                    border.color: header.currentState === "menu" ? "#FF8C00" : "transparent"
+                    border.width: header.currentState === "menu" ? 2 : 0
+                    radius: 10
 
-            // Контейнер для изображений
-            RowLayout {
-                spacing: 10
-                width: 596
-                height: 400
-                Layout.alignment: Qt.AlignHCenter
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            header.currentState = "menu"
+                            console.log("Меню нажата")
+                        }
+                    }
 
-                // Предыдущее изображение
-                Image {
-                    source: images[(currentIndex - 1 + images.length) % images.length]
-                    sourceSize.width: smallWidth
-                    sourceSize.height: smallHeight
-                    Layout.alignment: Qt.AlignVCenter
-                    fillMode: Image.PreserveAspectFit
-                    opacity: 0.5
+                    Text {
+                        text: "Меню"
+                        anchors.centerIn: parent
+                        color:"black"
+                        font.pixelSize: 16
+                    }
                 }
+                Rectangle {
+                    id: promoButton
+                    width: parent.width / 3
+                    height: parent.height
+                    color: header.currentState === "promo" ? "#FFDAB9" : "transparent"
+                    border.color: header.currentState === "promo" ? "#FF8C00" : "transparent"
+                    border.width: header.currentState === "promo" ? 2 : 0
+                    radius: 10
 
-                // Текущее изображение
-                Image {
-                    source: images[currentIndex]
-                    sourceSize.width: largeWidth
-                    sourceSize.height: largeHeight
-                    Layout.alignment: Qt.AlignVCenter
-                    fillMode: Image.PreserveAspectFit
-                }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            header.currentState = "promo"
+                            console.log("Акции нажата")
+                        }
+                    }
 
-                // Следующее изображение
-                Image {
-                    source: images[(currentIndex + 1) % images.length]
-                    sourceSize.width: smallWidth
-                    sourceSize.height: smallHeight
-                    Layout.alignment: Qt.AlignVCenter
-                    fillMode: Image.PreserveAspectFit
-                    opacity: 0.5
-                }
-            }
-
-            // Правая стрелка
-            Text {
-                text: "▶"
-                font.pixelSize: 80
-                color: "black"
-                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        currentIndex = (currentIndex + 1) % images.length;
+                    Text {
+                        text: "Акции"
+                        anchors.centerIn: parent
+                        color: "black"
+                        font.pixelSize: 16
                     }
                 }
             }
         }
-
-        // Остальная информация
         RowLayout {
-            spacing: 20
-            Layout.fillWidth: true
-
+            id: rightContainer
+            spacing: 10
+            Layout.alignment: Qt.AlignRight
             Rectangle {
-                width: 653
-                height: 850
+                width: 60
+                height: 60
                 color: "transparent"
-                Layout.alignment: Qt.AlignLeft
-                Text {
-                    text: "SIPPITY - это уютная кофейня..."
-                    font.pixelSize: 24
-                    color: "black"
-                    wrapMode: Text.WordWrap
-                    width: parent.width - 20
-                    Layout.alignment: Qt.AlignHCenter
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: console.log("Корзина кнопка нажата")
+                }
+
+                Image {
+                    sourceSize.height: 60
+                    sourceSize.width: 60
+                    source: "src/sales.png"
+                    fillMode: Image.PreserveAspectFit
                 }
             }
 
             Rectangle {
-                width: 596
-                height: 894
+                width: 60
+                height: 60
                 color: "transparent"
-                Layout.alignment: Qt.AlignRight
+                Layout.rightMargin: 50
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: console.log("Аккаунт кнопка нажата")
+                }
+
                 Image {
-                    source: "src/barista.png"
-                    sourceSize.width: 596
-                    sourceSize.height: 894
+                    sourceSize.height: 60
+                    sourceSize.width: 60
+                    source: "src/account.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
