@@ -28,7 +28,7 @@ Rectangle {
             radius: 10
             border.color: "#FFA07A"
             border.width: 2
-            Layout.leftMargin: 130
+            Layout.leftMargin: 50
             Layout.alignment: Qt.AlignHCenter
 
             RowLayout {
