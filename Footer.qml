@@ -7,6 +7,7 @@ Rectangle {
     width: parent.width
     height: 300
     color: "#593C27"
+    opacity: 1
 
     RowLayout {
         anchors.fill: parent
@@ -18,7 +19,7 @@ Rectangle {
             color: "transparent"
             Layout.preferredWidth: 200
             Layout.preferredHeight: 200
-            ColumnLayout {
+            Column {
                 anchors.fill: parent
                 spacing: 10
                 Text {
@@ -39,7 +40,7 @@ Rectangle {
             color: "transparent"
             Layout.preferredWidth: 200
             Layout.preferredHeight: 200
-            ColumnLayout {
+            Column {
                 anchors.fill: parent
                 spacing: 10
                 Text {
@@ -85,7 +86,7 @@ Rectangle {
             Layout.preferredWidth: 450
             Layout.preferredHeight: 300
             Layout.alignment: Qt.AlignRight
-            Layout.rightMargin: 50
+            Layout.rightMargin: 100
             Image {
                 source: "src/map.png"
                 sourceSize.width: 450
