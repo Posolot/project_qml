@@ -39,7 +39,7 @@ Rectangle {
                     border.color: "#aaaaaa"
 
                     Image {
-                        source: "src/image1.png"
+                        source: "src/cofee_5.png"
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectFit
                     }
@@ -108,7 +108,7 @@ Rectangle {
                     border.color: "#aaaaaa"
 
                     Image {
-                        source: "src/image1.png"
+                        source: "src/cofee_5.png"
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectFit
                     }
@@ -175,7 +175,7 @@ Rectangle {
                     border.color: "#aaaaaa"
 
                     Image {
-                        source: "src/image1.png"
+                        source: "src/cofee_5.png"
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectFit
                     }
@@ -244,7 +244,7 @@ Rectangle {
                     border.color: "#aaaaaa"
 
                     Image {
-                        source: "src/image1.png"
+                        source: "src/cofee_5.png"
                         anchors.fill: parent
                         fillMode: Image.PreserveAspectFit
                     }
